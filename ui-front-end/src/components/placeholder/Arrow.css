@@ -1,0 +1,14 @@
+/* Styling for arrows */
+.arrow-indicator {
+    margin-left: 8px;
+    font-size: 24px; /* Adjust as needed */
+    vertical-align: middle;
+    display: inline-block; /* Ensure proper alignment */
+  }
+  /* Arrow color classes with deeper shades */
+  .arrow-up {
+    color: #388e3c; /* Deeper green for up */
+  }
+  .arrow-down {
+    color: #d32f2f; /* Deeper red for down */
+  }
