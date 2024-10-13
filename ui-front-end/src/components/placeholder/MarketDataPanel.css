@@ -1,13 +1,13 @@
 /* Container for the entire market data panel */
 .MarketDataPanel {
     padding: 20px;
-    background-color: #16a7c0; /* Green background for the panel */
+    background-color: #16a7c0; 
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow-x: auto;
     overflow-y: auto;
     height: auto;
-    width: 100%; /* Enable horizontal scrolling if needed */
+    width: 100%; 
     height: fit-content;
   }
   /* Placeholder styling */
@@ -16,17 +16,17 @@
     align-items: center;
     justify-content: center;
     height: 300px;
-    background-color: #c57e7e; /* White background for better contrast */
+    background-color: #c57e7e; 
     border: 1px dashed hsl(0, 48%, 24%);
     border-radius: 4px;
-    font-size: 30px; /* Font size for the placeholder text */
-    color: #555; /* Dark grey color for the text */
+    font-size: 30px; 
+    color: #555; 
   }
   /* MarketTable display area */
   .MarketDataPanel-design {
-    background-color: #ffffff; /* White background for the MarketTable area */
+    background-color: #ffffff; 
     border-radius: 4px;
-    overflow: hidden; /* Hide overflow for better visual */
+    overflow: hidden; 
   }
   /* Button container styling */
   .MarketDataPanel-buttonContainer {
@@ -47,5 +47,5 @@
     transition: background-color 0.3s ease;
   }
   .MarketDataPanel-buttonContainer button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+    background-color: #0056b3; 
   }
