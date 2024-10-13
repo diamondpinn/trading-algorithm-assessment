@@ -7,7 +7,6 @@ interface MarketTableProps {
 }
 
 const MarketTable: React.FC<MarketTableProps> = ({ data }) => {
-  // Ref to store the previous bid and offer for comparison
   const previousPrices = useRef<{
     [key: string]: { bid: number; offer: number };
   }>({});
@@ -58,7 +57,6 @@ const MarketTable: React.FC<MarketTableProps> = ({ data }) => {
             const bidChange = ((item.bid - prevBid) / prevBid) * 100;
             const offerChange = ((item.offer - prevOffer) / prevOffer) * 100;
 
-            // Determine the price direction for the arrows
             const priceDirection =
               item.bid > prevBid
                 ? "up"
@@ -91,7 +89,7 @@ const MarketTable: React.FC<MarketTableProps> = ({ data }) => {
                       className="bar"
                       style={{
                         width: `${Math.min(Math.abs(bidChange), 100) * 35}%`, // Multiplied to make bars longer
-                        backgroundColor: "rgba(0, 0, 255, 0.3)", // Bid color
+                        backgroundColor: "rgba(0, 0, 255, 0.3)",
                         height: "50px",
                       }}
                     />
@@ -131,7 +129,7 @@ const MarketTable: React.FC<MarketTableProps> = ({ data }) => {
                       className="bar"
                       style={{
                         width: `${Math.min(Math.abs(offerChange), 100) * 35}%`, // Multiplied to make bars longer
-                        backgroundColor: "rgba(255, 0, 0, 0.3)", // Ask color
+                        backgroundColor: "rgba(255, 0, 0, 0.3)",
                         height: "50px",
                       }}
                     />

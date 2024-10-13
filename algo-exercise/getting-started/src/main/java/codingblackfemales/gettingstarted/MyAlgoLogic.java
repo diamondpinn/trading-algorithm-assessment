@@ -6,7 +6,7 @@ import codingblackfemales.action.CreateChildOrder;
 import codingblackfemales.action.NoAction;
 import codingblackfemales.algo.AlgoLogic;
 import codingblackfemales.sotw.ChildOrder;
-import codingblackfemales.sotw.OrderState; // Ensure OrderState is imported
+import codingblackfemales.sotw.OrderState;
 import codingblackfemales.sotw.SimpleAlgoState;
 import codingblackfemales.sotw.marketdata.AskLevel;
 import codingblackfemales.util.Util;
@@ -19,10 +19,10 @@ import java.util.List;
 public class MyAlgoLogic implements AlgoLogic {
 
     private static final Logger logger = LoggerFactory.getLogger(MyAlgoLogic.class);
-    private static final int MAX_ORDER_COUNT = 8; // Maximum number of orders allowed
-    private static final double MEAN_REVERSION_THRESHOLD = 0.05; // 5% deviation for mean reversion
-    private static final double TAKE_PROFIT_PERCENTAGE = 0.02; // 2% take profit
-    private static final double STOP_LOSS_PERCENTAGE = 0.02; // 2% stop loss
+    protected static final int MAX_ORDER_COUNT = 8;
+    private static final double MEAN_REVERSION_THRESHOLD = 0.05;
+    private static final double TAKE_PROFIT_PERCENTAGE = 0.02;
+    private static final double STOP_LOSS_PERCENTAGE = 0.02;
 
     public MyAlgoLogic() {
         // No-arg constructor
@@ -87,10 +87,10 @@ public class MyAlgoLogic implements AlgoLogic {
             }
         }
 
-        return NoAction.NoAction; // No action if neither condition is met
+        return NoAction.NoAction;
     }
 
-    private Action handleOrderExecution(ChildOrder order, SimpleAlgoState state) {
+    protected Action handleOrderExecution(ChildOrder order, SimpleAlgoState state) {
         long filledQuantity = order.getFilledQuantity(); // Get the filled quantity
         long filledPrice = order.getPrice(); // Get the filled price
 
@@ -128,7 +128,7 @@ public class MyAlgoLogic implements AlgoLogic {
     }
 
     // Method to update filled quantities and order state in the ChildOrder
-    private void updateChildOrderFill(ChildOrder order, long filledQuantity, long filledPrice) {
+    public void updateChildOrderFill(ChildOrder order, long filledQuantity, long filledPrice) {
         order.addFill(filledQuantity, filledPrice); // Track the fill
         if (order.getFilledQuantity() >= order.getQuantity()) {
             order.setState(OrderState.FILLED); // Update state to FILLED if fully filled

@@ -20,7 +20,7 @@ import { schemas } from "../../data/algo-schemas";
  */
 export const MarketDepthFeature = () => { 
 const data = useMarketDepthData(schemas.prices); 
-return <MarketDataPanel data={data} />; // Pass the fetched data to MarketDataPanel
+return <MarketDataPanel data={data} />; 
 };
 
 export default MarketDepthFeature;

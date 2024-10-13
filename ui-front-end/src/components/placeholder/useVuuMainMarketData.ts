@@ -1,30 +1,29 @@
 import { useState, useEffect } from 'react';
-import { TableSchema } from "@vuu-ui/vuu-data-types"; // Import TableSchema
-import { MarketDepthRow } from "../market-depth/useMarketDepthData"; // Import MarketDepthRow type
+import { TableSchema } from "@vuu-ui/vuu-data-types"; 
+import { MarketDepthRow } from "../market-depth/useMarketDepthData"; 
 
 // Define your useMarketData hook
 export const useMarketData = (schema: TableSchema) => {
-  const [data, setData] = useState<MarketDepthRow[]>([]); // State for market data
-  const [loading, setLoading] = useState(true); // Loading state
-  const [error, setError] = useState<string | null>(null); // Error state
-
+  const [data, setData] = useState<MarketDepthRow[]>([]); 
+  const [loading, setLoading] = useState(true); 
+  const [error, setError] = useState<string | null>(null); 
   useEffect(() => {
-    const socket = new WebSocket("ws://localhost:8090/websocket"); // WebSocket connection
+    const socket = new WebSocket("ws://localhost:8090/websocket"); 
 
     socket.onopen = () => {
       console.log("Connected to WebSocket server");
       console.log("Message received:");
-      setLoading(false); // Set loading to false when connected
+      setLoading(false); 
     };
 
     socket.onmessage = (event) => {
       try {
-        const message = JSON.parse(event.data); // Parse the incoming message
+        const message = JSON.parse(event.data); 
 
         // Handle market data messages
         if (message.type === "marketData") {
           const marketData: MarketDepthRow = {
-            // Construct your market data row based on the received message
+            // Construct  market data row based on the received message
             bid: message.bid,
             bidQuantity: message.bidQuantity,
             level: message.level,
@@ -32,54 +31,54 @@ export const useMarketData = (schema: TableSchema) => {
             offerQuantity: message.offerQuantity,
             symbolLevel: message.symbolLevel,
           };
-          setData((prevData) => [...prevData, marketData]); // Append new market data
+          setData((prevData) => [...prevData, marketData]); 
         }
       } catch (error) {
-        console.error("Error parsing WebSocket data:", error); // Log parsing errors
+        console.error("Error parsing WebSocket data:", error); 
         setError("Error parsing incoming data");
       }
     };
 
     socket.onerror = (event) => {
       console.error("WebSocket error observed:", event);
-      setError("WebSocket error occurred"); // Set error state on WebSocket errors
+      setError("WebSocket error occurred"); 
     };
 
     socket.onclose = () => {
       console.log("WebSocket closed");
     };
 
-    // Cleanup on unmount
+    
     return () => {
-      socket.close(); // Close WebSocket connection
+      socket.close(); 
     };
-  }, [schema]); // Dependency on schema if it changes
+  }, [schema]); 
 
-  return { data, loading, error }; // Return data, loading state, and error state
+  return { data, loading, error }; 
 };
 
-// Define your useVuuMainMarketData hook
+// Defining useVuuMainMarketData hook
 const useVuuMainMarketData = () => {
-  // Define the schema with the correct structure
+  
   const schema: TableSchema = {
     table: {
-      table: "Trading_Table", // Specify the actual table name here
-      module: "UI_Frontend" // Specify the actual module name if applicable
+      table: "Trading_Table", 
+      module: "UI_Frontend" 
     },
     columns: [
-      { name: "symbolLevel", serverDataType: "string" }, // Server data type for each column
+      { name: "symbolLevel", serverDataType: "string" }, 
       { name: "level", serverDataType: "long" },
       { name: "bid", serverDataType: "long" },
       { name: "bidQuantity", serverDataType: "long" },
       { name: "offer", serverDataType: "long" },
       { name: "offerQuantity", serverDataType: "long" },
     ],
-    key: "symbolLevel", // Correct identifier for your primary key
+    key: "symbolLevel", 
   };
 
-  const { data, loading, error } = useMarketData(schema); // Use the market data hook
+  const { data, loading, error } = useMarketData(schema); 
 
-  return { data, loading, error, schema }; // Return data, loading state, error state, and schema
+  return { data, loading, error, schema }; 
 };
 
 export default useVuuMainMarketData;

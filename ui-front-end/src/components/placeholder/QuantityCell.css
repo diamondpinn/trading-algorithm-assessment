@@ -1,34 +1,34 @@
 /* Quantity.css */
 .quantity-bar {
-    height: 20px; /* Height of the quantity bar */
-    border-radius: 5px; /* Rounded corners */
+    height: 20px; 
+    border-radius: 5px; 
     display: flex;
-    align-items: center; /* Center the text vertically */
-    justify-content: flex-end; /* Align text to the right */
-    position: relative; /* Set position to relative for absolute child */
-    overflow: hidden; /* Hide overflow for the left-aligned bar */
+    align-items: center; 
+    justify-content: flex-end; 
+    position: relative; 
+    overflow: hidden; 
   }
   
   .bar {
     position: absolute;
-    right: 0; /* Start from the right */
+    right: 0; 
     height: 100%;
-    transition: width 0.3s ease; /* Smooth transition for width changes */
+    transition: width 0.3s ease; 
   }
   
   .quantity-bar.bid .bar {
-    background-color: blue; /* Blue color for the bid side */
+    background-color: blue; 
   }
   
   .quantity-bar.ask .bar {
-    background-color: red; /* Red color for the ask side */
+    background-color: red; 
     left: 0; 
   }
   
-  /* Optional: Style for the table cell */
+  
   td {
-    padding: 10px; /* Space within the table cell */
-    text-align: right; /* Align text to the right */
-    font-size: 16px; /* Size of the text */
+    padding: 10px; 
+    text-align: right; 
+    font-size: 16px; 
   }
   

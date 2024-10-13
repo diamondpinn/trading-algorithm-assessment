@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./PriceCell.css"; // Ensure this path is correct
+import "./PriceCell.css";
 
 interface PriceCellProps {
   price: number;
@@ -25,7 +25,9 @@ export const PriceCell: React.FC<PriceCellProps> = (props) => {
 
   return (
     <td>
-      <span className={arrow ${direction}}>
+      <span className={`arrow ${direction}`}>
+        {" "}
+        {/* Fixed className syntax */}
         {direction === "up" ? "↑" : direction === "down" ? "↓" : "-"}
       </span>
       {props.price}

@@ -1,24 +1,24 @@
 .arrow {
-  margin-right: 8px; /* Space between the arrow and the price */
-  font-size: 18px; /* Size of the arrow */
-  font-weight: bold; /* Make the arrow bold */
+  margin-right: 8px; 
+  font-size: 18px; 
+  font-weight: bold; 
 }
 
 .arrow.up {
-  color: green; /* Green color for price increase */
+  color: green; 
 }
 
 .arrow.down {
-  color: red; /* Red color for price decrease */
+  color: red; 
 }
 
 .arrow.neutral {
-  color: gray; /* Gray color for no change */
+  color: gray; 
 }
 
-/* Optional: Style for the price cell */
+
 td {
-  padding: 10px; /* Space within the table cell */
-  text-align: right; /* Align text to the right */
-  font-size: 16px; /* Size of the price text */
+  padding: 10px; 
+  text-align: right; 
+  font-size: 16px; 
 }

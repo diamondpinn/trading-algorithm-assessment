@@ -5,8 +5,6 @@ import codingblackfemales.sotw.marketdata.AskLevel;
 import codingblackfemales.sotw.marketdata.BidLevel;
 import codingblackfemales.sotw.ChildOrder;
 import codingblackfemales.sotw.OrderState;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class SimpleAlgoStateMock implements SimpleAlgoState {

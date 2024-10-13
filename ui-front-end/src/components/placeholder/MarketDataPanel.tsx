@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./MarketDataPanel.css";
-import MarketTable from "./MarketTable"; // Import the new MarketTable component
+import MarketTable from "./MarketTable";
 import { MarketDepthRow } from "../market-depth/useMarketDepthData";
 
 export interface Props {
