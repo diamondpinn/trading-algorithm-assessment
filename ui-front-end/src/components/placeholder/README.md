@@ -119,4 +119,3 @@ To run tests for the project, use the following command:
 **bash**
 **npm test**
 - This will run unit tests and check component functionality. Ensure that you have implemented tests for major components and hooks.
-
