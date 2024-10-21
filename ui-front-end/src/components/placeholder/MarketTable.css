@@ -1,0 +1,109 @@
+/* General Table Styles */
+table {
+    width: 95vw;
+    height: 95vh;
+    border-collapse: collapse;
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    font-size: large;
+  }
+  
+  th,
+  td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  thead th {
+    background-color: #f5f5f5;
+  }
+  
+  tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  tbody tr:hover {
+    background-color: #e0e0e0;
+  }
+  
+  /* Quantity Bar Styles */
+  .quantity-bar {
+    height: 100px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .quantity-bar.bid {
+    justify-content: flex-end; /* Bid bars aligned to the right */
+  }
+  
+  .quantity-bar.ask {
+    justify-content: flex-start; /* Ask bars aligned to the left */
+  }
+  
+  .quantity-bar.bid .bar {
+    position: absolute;
+    right: 0;
+    height: 100%;
+    transition: width 0.3s ease;
+    min-width: 20px; /* Minimum width to ensure visibility */
+  }
+  
+  .quantity-bar.ask .bar {
+    position: absolute;
+    left: 0;
+    height: 100%;
+    transition: width 0.3s ease;
+    min-width: 20px; 
+  }
+  
+  .quantity-bar.bid .bar {
+    background-color: #0e0ee64d; 
+  }
+  
+  .quantity-bar.ask .bar {
+    background-color: rgba(235, 12, 12, 0.952); 
+  }
+  
+  /* Arrow Styles */
+  .arrow {
+    margin-right: 8px;
+    font-size: 30px;
+    font-weight: bold;
+  }
+  
+  .arrow.up {
+    color: green;
+  }
+  
+  .arrow.down {
+    color: red;
+  }
+  
+  /* Header Alignment */
+  .bid-header {
+    text-align: left;
+  }
+  
+  .ask-header {
+    text-align: right;
+  }
+  
+  /* Cell Alignment */
+  .quantity-cell {
+    text-align: center;
+  }
+  
+  .price-cell {
+    text-align: center;
+  }
+  
+  /* Ensure ask quantity values are left-aligned */
+  .ask-quantity-cell {
+    text-align: left; 
+  }

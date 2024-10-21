@@ -3,7 +3,6 @@ import { useCallback, useMemo, useState } from "react";
 import { VuuDataRow } from "@vuu-ui/vuu-protocol-types";
 import { ColumnMap, buildColumnMap } from "@vuu-ui/vuu-utils";
 import { useDataSource } from "@vuu-ui/vuu-shell";
-
 export type MarketDepthRow = {
   symbolLevel: string;
   offer: number;
@@ -12,12 +11,10 @@ export type MarketDepthRow = {
   bidQuantity: number;
   level: number;
 };
-
 const byLevel = (
   { level: levelA }: MarketDepthRow,
   { level: levelB }: MarketDepthRow
 ) => (levelA > levelB ? 1 : -1);
-
 class MarketPriceLevelStore {
   #data: Map<string, MarketDepthRow> = new Map();
   #columnMap: ColumnMap;
@@ -25,11 +22,9 @@ class MarketPriceLevelStore {
     this.#columnMap = columnMap;
     console.log({ columnMap });
   }
-
   get data() {
     return Array.from(this.#data.values()).sort(byLevel);
   }
-
   toMarketDepthRow = (vuuRow: VuuDataRow): MarketDepthRow => {
     return {
       symbolLevel: vuuRow[this.#columnMap.symbolLevel] as string,
@@ -40,7 +35,6 @@ class MarketPriceLevelStore {
       offerQuantity: vuuRow[this.#columnMap.offerQuantity] as number,
     };
   };
-
   update(vuuData: VuuDataRow[]) {
     const marketDepthRows = vuuData.map(this.toMarketDepthRow);
     marketDepthRows.forEach((row) => {
@@ -48,16 +42,13 @@ class MarketPriceLevelStore {
     });
   }
 }
-
 export const useMarketDepthData = (schema: TableSchema) => {
   const [, forceUpdate] = useState<unknown>(null);
   const dataStore = useMemo(() => {
     const columnMap = buildColumnMap(schema.columns);
     return new MarketPriceLevelStore(columnMap);
   }, [schema.columns]);
-
   const { VuuDataSource } = useDataSource();
-
   const datasourceMessageHandler: SubscribeCallback = useCallback(
     (message) => {
       console.log({ message });
@@ -70,7 +61,6 @@ export const useMarketDepthData = (schema: TableSchema) => {
     },
     [dataStore]
   );
-
   useMemo(() => {
     const ds = new VuuDataSource({
       table: { module: "ALGO", table: "prices" },
@@ -83,9 +73,7 @@ export const useMarketDepthData = (schema: TableSchema) => {
       },
       datasourceMessageHandler
     );
-
     return ds;
   }, [VuuDataSource, datasourceMessageHandler, schema.columns]);
-
   return dataStore.data;
 };

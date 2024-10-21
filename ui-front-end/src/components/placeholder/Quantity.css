@@ -1,0 +1,33 @@
+/* Quantity.css */
+.quantity-bar {
+    height: 20px; 
+    border-radius: 5px; 
+    display: flex;
+    align-items: center; 
+    justify-content: flex-end; 
+    position: relative; 
+    overflow: hidden; 
+  }
+  
+  .bar {
+    position: absolute;
+    right: 0; 
+    height: 100%;
+    transition: width 0.3s ease; 
+  }
+  
+  .quantity-bar.bid .bar {
+    background-color: blue; 
+  }
+  
+  .quantity-bar.ask .bar {
+    background-color: red; 
+    left: 0; 
+  }
+  
+  
+  td {
+    padding: 10px; 
+    text-align: right; 
+    font-size: 16px; 
+  }

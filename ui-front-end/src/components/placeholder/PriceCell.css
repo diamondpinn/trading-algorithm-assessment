@@ -1,0 +1,24 @@
+.arrow {
+    margin-right: 8px; 
+    font-size: 18px; 
+    font-weight: bold; 
+  }
+  
+  .arrow.up {
+    color: green; 
+  }
+  
+  .arrow.down {
+    color: red; 
+  }
+  
+  .arrow.neutral {
+    color: gray; 
+  }
+  
+  
+  td {
+    padding: 10px; 
+    text-align: right; 
+    font-size: 16px; 
+  }

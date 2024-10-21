@@ -13,12 +13,10 @@ import java.nio.ByteBuffer;
 public class CreateChildOrder implements Action {
 
     private static final Logger logger = LoggerFactory.getLogger(CreateChildOrder.class);
-    private final long quantity;
-    private final long price;
+    public final long quantity;
+    public final long price;
 
     private final Side side;
-
-
 
     public CreateChildOrder(final Side side, final long quantity, final long price) {
         this.quantity = quantity;
